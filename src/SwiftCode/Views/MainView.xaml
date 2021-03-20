@@ -1,17 +1,38 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
+    x:Class="SwiftCode.Views.MainView"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    BackgroundColor="#ddc477"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="SwiftCode.Views.MainView">
+    xmlns:rv="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame">
+    <ContentPage.Resources>
+        <Style TargetType="rv:MaterialFrame">
+            <Setter Property="Margin" Value="5, 5, 5, 10" />
+            <Setter Property="Padding" Value="20,15" />
+            <Setter Property="CornerRadius" Value="10" />
+        </Style>
+
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout VerticalOptions="Center">
-            <Label TextColor="White" FontSize="22" HorizontalOptions="Center" HorizontalTextAlignment="Center" Text="{Binding Quote}">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding ClipboardCommand}"/>
-                </Label.GestureRecognizers>
-            </Label>
-            <Button Visual="Material" Command="{Binding GetNewQuoteCommand}" Text="Next one, please!"/>
-        </StackLayout>
+        <Grid>
+            <Image Source="{Binding BgImage}" Aspect="AspectFill" />
+            <rv:MaterialFrame VerticalOptions="Center" LightThemeBackgroundColor="#c39977" BackgroundColor="#c39977" MaterialTheme="AcrylicBlur">
+                <StackLayout VerticalOptions="Center">
+                    <Label
+                        FontSize="22"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Text="{Binding Quote}"
+                        TextColor="White">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ClipboardCommand}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Button
+                        Command="{Binding GetNewQuoteCommand}"
+                        Text="Next one, please!"
+                        Visual="Material" />
+                </StackLayout>
+            </rv:MaterialFrame>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

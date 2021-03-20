@@ -23,6 +23,17 @@ namespace SwiftCode.ViewModels
             }
         }
 
+        private string bgImage;
+        public string BgImage
+        {
+            get { return bgImage; }
+            set
+            {
+                bgImage = value;
+                OnPropertyChanged();
+            }
+        }
+
         public AsyncCommand GetNewQuoteCommand { get; }
         public AsyncCommand ClipboardCommand { get; }
 
@@ -51,11 +62,14 @@ namespace SwiftCode.ViewModels
 
             HttpClient client = new HttpClient();
             var response = await client.GetStringAsync("https://api.taylor.rest/");
-            if (String.IsNullOrEmpty(response))
+            var imagesResponse = await client.GetStringAsync("https://api.taylor.rest/image");
+            if (String.IsNullOrEmpty(response) && String.IsNullOrEmpty(imagesResponse))
                 return;
 
             var quote = JsonConvert.DeserializeObject<Quote>(response);
+            var img = JsonConvert.DeserializeObject<Images>(imagesResponse);
             Quote = quote.Message;
+            BgImage = img.ImageUrl;
 
             IsBusy = false;
         }
