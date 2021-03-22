@@ -9,13 +9,13 @@
             <Setter Property="Margin" Value="5, 5, 5, 10" />
             <Setter Property="Padding" Value="20,15" />
             <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="BackgroundColor" Value="#c39977" />
         </Style>
-
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
             <Image Source="{Binding BgImage}" Aspect="AspectFill" />
-            <rv:MaterialFrame VerticalOptions="Center" LightThemeBackgroundColor="#c39977" BackgroundColor="#c39977" MaterialTheme="AcrylicBlur">
+            <rv:MaterialFrame VerticalOptions="Center" MaterialTheme="AcrylicBlur">
                 <StackLayout VerticalOptions="Center">
                     <Label
                         FontSize="22"
