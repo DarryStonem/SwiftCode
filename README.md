@@ -2,3 +2,5 @@
 Taylor Swift Random Quote App
 
 Thanks to the API by [@gillescoolen](https://github.com/gillescoolen).
+
+<img src="./images/Icon.jpeg" alt="drawing" width="250" height="250"/>
